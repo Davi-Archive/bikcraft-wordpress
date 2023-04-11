@@ -429,7 +429,7 @@ img {
 /*Animações*/
 
 .js .introducao h1, .js .introducao blockquote, .js .introducao .btn, .js .animar, .js .animar-interno, .js .introducao-interna h1, .js .introducao-interna p {
-	opacity: 0;
+ 	/* opacity: 0; */
 }
 
 .animated {

@@ -14,10 +14,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="shortcut icon" href="<?= get_template_directory_uri(); ?>/favicon.ico">
 
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/style.css">
-    <script src="./js/libs/modernizr.custom.45655.js"></script>
+    <script src="<?= get_template_directory_uri(); ?>/js/libs/modernizr.custom.45655.js"></script>
 
     <!-- Inicio Wordpress Head-->
     <?php wp_head(); ?>
@@ -28,15 +28,15 @@
 
     <header class="header">
         <div class="container">
-            <a href="index.html" class="grid-4">
-                <img src="./img/bikcraft.png" alt="Bikcraft">
+            <a href="/home/" class="grid-4">
+                <img src="<?= get_template_directory_uri(); ?>/img/bikcraft.png" alt="Bikcraft">
             </a>
             <nav class="grid-12 header_menu">
                 <ul>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="portfolio.html">Portfólio</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="/sobre/">Sobre</a></li>
+                    <li><a href="/produtos/">Produtos</a></li>
+                    <li><a href="/portfolio/">Portfólio</a></li>
+                    <li><a href="/contato/">Contato</a></li>
                 </ul>
             </nav>
         </div>

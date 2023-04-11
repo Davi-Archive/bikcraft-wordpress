@@ -1,11 +1,10 @@
-<?php get_header(); ?>
+<?php
+// Template Name: Produtos
+get_header();
+?>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-		<section class="introducao-interna interna_produtos">
-			<div class="container">
-				<h1>Produtos</h1>
-				<p>conheça todos os nossos produtos</p>
-			</div>
-		</section>
+		<?php include(TEMPLATEPATH . '/inc/introducao.php'); ?>
 
 		<section class="container produto_item animar-interno">
 			<div class="grid-11">
@@ -75,7 +74,7 @@
 					<label class="nao-aparece">Se você não é um robô, deixe em branco.</label>
 					<input type="text" class="nao-aparece" name="leaveblank">
 					<label class="nao-aparece">Se você não é um robô, não mude este campo.</label>
-					<input type="text" class="nao-aparece" name="dontchange" value="http://" >
+					<input type="text" class="nao-aparece" name="dontchange" value="http://">
 
 					<label for="mensagem">Especificações</label>
 					<textarea name="mensagem" id="mensagem"></textarea>
@@ -90,13 +89,16 @@
 					<p>Escolha as especificações:</p>
 					<ul>
 						<li>- Cores</li>
-    				<li>- Estilo</li>
-    				<li>- Medidas</li>
-   					<li>- Acessórios</li>
-    				<li>- E Outros</li>
+						<li>- Estilo</li>
+						<li>- Medidas</li>
+						<li>- Acessórios</li>
+						<li>- E Outros</li>
 					</ul>
 				</div>
 			</div>
 		</section>
+
+<?php endwhile;
+else : endif; ?>
 
 <?php get_footer(); ?>
