@@ -5,12 +5,12 @@ get_header();
 
 <section class="introducao">
 	<div class="container">
-		<h1>Bicicletas Feitas a Mão</h1>
+		<h1><?php the_field('titulo_introducao') ?></h1>
 		<blockquote class="quote-externo">
-			<p>“não tenha nada em sua casa que você não considere útil ou acredita ser bonito”</p>
-			<cite>WILLIAM MORRIS</cite>
+			<p><?php the_field('quote_introducao') ?></p>
+			<cite><?php the_field('citacao_introducao') ?></cite>
 		</blockquote>
-		<a href="produtos.html" class="btn">Orçamento</a>
+		<a href="/produtos/" class="btn">Orçamento</a>
 	</div>
 </section>
 
@@ -20,7 +20,7 @@ get_header();
 
 		<li class="grid-1-3">
 			<div class="produtos_icone">
-				<img src="img/produtos/passeio.png" alt="Bikcraft Passeio">
+				<img src="<?php echo get_template_directory_uri() ?>/img/produtos/passeio.png" alt="Bikcraft Passeio">
 			</div>
 			<h3>Passeio</h3>
 			<p>Muito melhor do que passear pela orla a vidros fechados.</p>
@@ -28,7 +28,7 @@ get_header();
 
 		<li class="grid-1-3">
 			<div class="produtos_icone">
-				<img src="img/produtos/esporte.png" alt="Bikcraft Esporte">
+				<img src="<?php echo get_template_directory_uri() ?>/img/produtos/esporte.png" alt="Bikcraft Esporte">
 			</div>
 			<h3>Esporte</h3>
 			<p>Mais rápida do que Forrest Gump, ninguém vai pegar você.</p>
@@ -36,7 +36,7 @@ get_header();
 
 		<li class="grid-1-3">
 			<div class="produtos_icone">
-				<img src="img/produtos/retro.png" alt="Bikcraft Retrô">
+				<img src="<?php echo get_template_directory_uri() ?>/img/produtos/retro.png" alt="Bikcraft Retrô">
 			</div>
 			<h3>Retrô</h3>
 			<p>O passado volta para lembrarmos o que devemos fazer no futuro.</p>
@@ -45,8 +45,8 @@ get_header();
 	</ul>
 
 	<div class="call">
-		<p>clique aqui e veja os detalhes dos produtos</p>
-		<a href="produtos.html" class="btn btn-preto">Produtos</a>
+		<p><?php the_field('chamada_produtos') ?></p>
+		<a href="/produtos/" class="btn btn-preto">Produtos</a>
 	</div>
 
 </section>
@@ -55,13 +55,11 @@ get_header();
 <section class="portfolio">
 	<div class="container">
 		<h2 class="subtitulo">Portfólio</h2>
-		<div class="portfolio_lista">
-			<div class="grid-8"><img src="img/portfolio/retro.jpg" alt="Bicicleta Retrô"></div>
-			<div class="grid-8"><img src="img/portfolio/passeio.jpg" alt="Bicicleta Passeio"></div>
-			<div class="grid-16"><img src="img/portfolio/esporte.jpg" alt="Bicicleta Esporte"></div>
-		</div>
+
+		<?php include(TEMPLATEPATH . '/inc/clientes-portfolio.php'); ?>
+
 		<div class="call">
-			<p>conheça mais o nosso portfólio</p>
+			<p><?php the_field('chamada_portfolio') ?></p>
 			<a href="portfolio.html" class="btn">Portfólio</a>
 		</div>
 	</div>

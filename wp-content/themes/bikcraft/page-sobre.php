@@ -2,7 +2,11 @@
 // Template Name: Sobre
 get_header();
 ?>
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+
+<?php if (have_posts()) : while (have_posts()) : the_post();
+global $post;
+?>
 
 		<?php include(TEMPLATEPATH . '/inc/introducao.php'); ?>
 
@@ -46,7 +50,14 @@ get_header();
 				</li>
 			</ul>
 		</section>
+		<pre>
+<?php
+echo json_encode(pods('sobre', $post->ID), JSON_PRETTY_PRINT);
+echo pods('sobre', $post->ID)->template('teste');
+ ?>
+ </pre>
 <?php endwhile;
 else : endif; ?>
+
 
 <?php get_footer(); ?>
