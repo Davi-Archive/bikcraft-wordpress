@@ -1,6 +1,10 @@
 <?php
 
 // Funçoes para Limpar o Header
+
+use function PHPSTORM_META\map;
+use function PHPSTORM_META\registerArgumentsSet;
+
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'start_post_rel_link', 10, 0);
@@ -25,4 +29,35 @@ function my_custom_sizes()
 
 add_action('after_setup_theme','my_custom_sizes');
 
-?>
+// Custom Post Type
+function custom_post_type_produtos(){
+    register_post_type('produtos', array(
+        'label' => 'Produtos',
+        'description' => 'Produtos',
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'capability_type' => 'post',
+        'map_meta_cap' => true,
+        'hierarchical' => false,
+        'rewrite' => array('slug'=> 'produtos', 'with_front' => true),
+        'query_var' => true,
+        'supports' => array('title', 'editor','page-attributes', 'post-formats'),
+        'labels'=> array(
+            'name' => 'Produtos',
+            'singular_name' => 'Produtos',
+            'menu_name' => 'Produtos',
+            'add_new'=> 'Adicionar Novo',
+            'add_new_item'=> 'Adicionar Novo Produto',
+            'edit' => 'Editar',
+            'edit_item' => 'Editar Produto',
+            'new_item'=> 'Novo Produto',
+            'view' => 'Ver Produto',
+            'view_item' => 'Ver Produto',
+            'search_items'=>'Procurar Produtos',
+            'not_found'=> 'Nenhum Produto Encontrado',
+            'not_found_in_trash'=> 'Nenhum Produto Encontrado no Lixo'
+        )
+        ));
+}
+add_action('init','custom_post_type_produtos');
