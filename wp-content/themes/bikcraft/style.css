@@ -1,9 +1,9 @@
 /*
-Theme Name: BikCraft
-Theme URI: https://github.com/d1av/bikcraft-wordpress
-Author: Davi
-Author URI: https://github.com/d1av
-Description: Theme for bicycle shop.
+Theme Name: Bikcraft
+Theme URI: http://bikcraft.com
+Author: André Rafael
+Author URI: http://origamid.com/
+Description: Tema criado para a Bikcraft
 Version: 1.0
 */
 
@@ -14,11 +14,11 @@ Version: 1.0
 @import 'css/produtos.css';
 @import 'css/portfolio.css';
 @import 'css/contato.css';
-@import 'css/responsivo.css';
+@import 'css/blog.css';
 
-/* Estilos ADM Wordpress  */
+/* Estilos ADM Wordpress */
 
-.customize-support .header{
+.customize-support .header {
 	margin-top: 32px;
 }
 
@@ -237,10 +237,6 @@ img {
 	padding: 60px 0;
 }
 
-.produtos_lista a {
-	color: #000000;
-}
-
 .produtos_lista li{
 	background: #fec63e;
 	text-align: center;
@@ -248,6 +244,10 @@ img {
 
 .produtos_lista li img {
 	margin: 0 auto;
+}
+
+.produtos_lista a {
+	color: #000;
 }
 
 .produtos_lista li h3{
@@ -322,7 +322,7 @@ img {
 	width: 634px;
 	height: 83px;
 	display: block;
-	background: url("./img/linhas.png") no-repeat center;
+	background: url("img/linhas.png") no-repeat center;
 	position: absolute;
 	top: 209px;
 	right: 162px;
@@ -366,8 +366,6 @@ img {
 .quebra {
 	width: 100%;
 	height: 220px;
-	background: url("./img/bg-footer.jpg") no-repeat center;
-	background-size: cover;
 	text-align: center;
 	padding-top: 40px;
 }
@@ -437,53 +435,75 @@ img {
 
 /*Animações*/
 
-.js .introducao h1, .js .introducao blockquote, .js .introducao .btn, .js .animar, .js .animar-interno, .js .introducao-interna h1, .js .introducao-interna p {
- 	/* opacity: 0; */
+/*JAVASCRIPT*/
+
+.js [data-slide] {
+  position: relative;
+}
+.js [data-slide] > * {
+  position: absolute;
+  top: 0px;
+  opacity: 0;
+}
+.js [data-slide] > .active {
+  position: relative;
+  opacity: 1;
+  transition: opacity 500ms;
 }
 
-.animated {
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
+.js [data-slide-nav] {
+	display: block;
+	text-align: center;
+	margin-top: 20px;
 }
 
-@-webkit-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -20px, 0);
-            transform: translate3d(0, -20px, 0);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
+.js [data-slide-nav] button {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	margin: 4px;
+	border: none;
+	padding: 0px;
+	border-radius: 6px;
+	text-indent: -99px;
+	overflow: hidden;
+	background: #1d1d1d;
 }
 
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -20px, 0);
-            transform: translate3d(0, -20px, 0);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
+.js [data-slide-nav] button.active {
+	background: #fec63e;
 }
 
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-          animation-name: fadeInDown;
+.js [data-anime] {
+	opacity: 0;
 }
 
-/*
-Estilos Responsivos
-*/
+.js .fadeInDown {
+	transform: translate3d(0, -20px, 0);
+}
+
+.js .anime {
+	opacity: 1;
+	transform: none;
+	transition: opacity 800ms, transform 800ms;
+}
+
+.nao-aparece {
+	visibility: hidden;
+	position: absolute;
+	height: 0px;
+}
+
+#form-sucesso {
+	color: #31aa39;
+}
+
+#form-erro {
+	color: #f64540;
+}
+
+/*ESTILOS RESPONSIVOS*/
+
 /*Estilo para tablets*/
 @media only screen and (min-width: 768px) and (max-width: 959px) {
 
@@ -537,10 +557,6 @@ Estilos Responsivos
 
 /*Estilo para smartphone*/
 @media only screen and (max-width: 767px) {
-
-.customize-support .header{
-	margin-top: 0px;
-}
 
 /*Header*/
 .header {
