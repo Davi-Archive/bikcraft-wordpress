@@ -35,7 +35,7 @@ if ($_POST['leaveblank'] != '' or $_POST['dontchange'] != 'http://') {
 	font-weight: normal;
 	color: #1b1b1b;
 	\"><center><span>Aconteceu algum erro!</span><p>Você pode tentar denovo ou enviar direto para " . $email_envio . "!</p></center><h2>";
-	
+
 	echo "<html style=\"background: #fff;\"></html>";
 	echo "<meta HTTP-EQUIV='Refresh' CONTENT='10;URL=" . $site_url . "'>";
 }
@@ -52,7 +52,7 @@ $mail->Host = $host_smtp;
 $mail->SMTPAuth = true;
 $mail->Username = $email_envio;
 $mail->Password = $email_pass;
-$mail->Port = $host_port; 
+$mail->Port = $host_port;
 
 $mail->From = $email_envio;
 
@@ -68,7 +68,7 @@ $mail->Subject = 'Formulário - ' . $site_name . ' - ' . $_POST['nome'];
 $mail->Body = $body_content;
 
 if(!$mail->send()) {
-  
+
   echo "<h2
 	style=\"
 	font-size: 1.5em;
@@ -78,10 +78,10 @@ if(!$mail->send()) {
 	font-weight: normal;
 	color: #fdc64b;
 	\"><center><span>Aconteceu algum erro!</span><p>Você pode tentar denovo ou enviar direto para " . $email_envio . "!</p></center><h2>";
-	
+
 	echo "<html style=\"background: #fff;\"></html>";
 	echo "<meta HTTP-EQUIV='Refresh' CONTENT='10;URL=" . $site_url . "'>";
-  
+
 } else {
 
   echo "<h2
@@ -93,7 +93,7 @@ if(!$mail->send()) {
 	font-weight: normal;
 	color: #89bb50;
 	\"><center><span>Formulário Enviado</span><p>Em breve eu entro em contato com você. Abraços.</p></center><h2>";
-	
+
 	echo "<html style=\"background: #fff;\"></html>";
 	echo "<meta HTTP-EQUIV='Refresh' CONTENT='2;URL=" . $site_url . "'>";
 }
