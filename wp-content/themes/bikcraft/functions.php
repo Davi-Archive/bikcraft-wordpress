@@ -1,10 +1,27 @@
 <?php
 
+// Função para registrar os Scripts
+function moving_scripts()
+{
+    wp_register_script('simple-slide', get_template_directory_uri() . '/js/simple-slide.js', [], 1.1, true);
+    wp_register_script('simple-anime', get_template_directory_uri() . '/js/simple-anime.js', [], 1.1, true);
+    wp_register_script('simple-form', get_template_directory_uri() . '/js/simple-form.js', [], 1.1, true);
+    wp_register_script('script', get_template_directory_uri() . '/js/script.js', ['simple-slide','simple-anime','simple-form'], false, false);
+
+    wp_enqueue_script('script');
+}
+
+
+function register_css(){
+    wp_register_style('register-style', get_stylesheet_uri());
+    wp_enqueue_style('register-style');
+}
+
+add_action('wp_enqueue_scripts', 'register_css');
+add_action('wp_enqueue_scripts', 'moving_scripts');
+
+
 // Funçoes para Limpar o Header
-
-use function PHPSTORM_META\map;
-use function PHPSTORM_META\registerArgumentsSet;
-
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'start_post_rel_link', 10, 0);
@@ -19,6 +36,12 @@ remove_action('admin_print_styles', 'print_emoji_styles');
 // Habilitar Menu
 add_theme_support('menus');
 
+// Registrar Menu
+function register_my_menu()
+{
+    register_nav_menu('menu-principal', __('Menu Principal'));
+}
+add_action('init', 'register_my_menu');
 
 // Adicionar tamanho na imagem
 function my_custom_sizes()
@@ -27,10 +50,11 @@ function my_custom_sizes()
     add_image_size('medium', 768, 380, true);
 }
 
-add_action('after_setup_theme','my_custom_sizes');
+add_action('after_setup_theme', 'my_custom_sizes');
 
 // Custom Post Type
-function custom_post_type_produtos(){
+function custom_post_type_produtos()
+{
     register_post_type('produtos', array(
         'label' => 'Produtos',
         'description' => 'Produtos',
@@ -40,24 +64,24 @@ function custom_post_type_produtos(){
         'capability_type' => 'post',
         'map_meta_cap' => true,
         'hierarchical' => false,
-        'rewrite' => array('slug'=> 'produtos', 'with_front' => true),
+        'rewrite' => array('slug' => 'produtos', 'with_front' => true),
         'query_var' => true,
-        'supports' => array('title', 'editor','page-attributes', 'post-formats'),
-        'labels'=> array(
+        'supports' => array('title', 'editor', 'page-attributes', 'post-formats'),
+        'labels' => array(
             'name' => 'Produtos',
             'singular_name' => 'Produtos',
             'menu_name' => 'Produtos',
-            'add_new'=> 'Adicionar Novo',
-            'add_new_item'=> 'Adicionar Novo Produto',
+            'add_new' => 'Adicionar Novo',
+            'add_new_item' => 'Adicionar Novo Produto',
             'edit' => 'Editar',
             'edit_item' => 'Editar Produto',
-            'new_item'=> 'Novo Produto',
+            'new_item' => 'Novo Produto',
             'view' => 'Ver Produto',
             'view_item' => 'Ver Produto',
-            'search_items'=>'Procurar Produtos',
-            'not_found'=> 'Nenhum Produto Encontrado',
-            'not_found_in_trash'=> 'Nenhum Produto Encontrado no Lixo'
+            'search_items' => 'Procurar Produtos',
+            'not_found' => 'Nenhum Produto Encontrado',
+            'not_found_in_trash' => 'Nenhum Produto Encontrado no Lixo'
         )
-        ));
+    ));
 }
-add_action('init','custom_post_type_produtos');
+add_action('init', 'custom_post_type_produtos');

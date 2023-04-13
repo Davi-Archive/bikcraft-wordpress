@@ -79,7 +79,6 @@ else : endif; ?>
 
 		<?php include(TEMPLATEPATH . '/inc/clientes-portfolio.php'); ?>
 
-
 	</div>
 </section>
 
